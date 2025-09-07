@@ -28,11 +28,12 @@ It takes subjects, faculty, and weekly lecture requirements as input and generat
 - Support for weekends & multiple lunch breaks
 
 ---
-## How to Run
+## 🚀 How to Run
 1. **Clone this repository:**
 ```
 git clone https://github.com/anshthummar9/Dynamic_Time_Table.git
 cd Dynamic_Time_Table
+cd src
 ```
 2. **Compile the program:**
 ```
