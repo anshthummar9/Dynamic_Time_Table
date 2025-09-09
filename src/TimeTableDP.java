@@ -8,7 +8,7 @@ import java.util.Scanner;
  * This class sets up the problem by defining the subjects, teachers, and constraints,
  * then invokes the solver and prints the result.
  */
-public class AutomaticTimetableGenerator {
+public class TimeTableDP {
 
     public static void main(String[] args) {
         // Use try-with-resources to automatically close the scanner
@@ -22,7 +22,7 @@ public class AutomaticTimetableGenerator {
 
             // --- Step 1: Get Available Subjects from User ---
             System.out.print("\nStep 1: How many subjects do you want to enter? ");
-            int numSubjects = 0;
+            int numSubjects;
             try {
                 numSubjects = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
@@ -50,7 +50,7 @@ public class AutomaticTimetableGenerator {
 
             // --- Step 2: Get Available Teachers/Faculty from User ---
             System.out.print("\nStep 2: How many faculty members do you want to enter? ");
-            int numTeachers = 0;
+            int numTeachers;
             try {
                 numTeachers = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
@@ -125,7 +125,7 @@ public class AutomaticTimetableGenerator {
             System.out.println("\nAttempting to generate timetable with the provided data...");
 
             // --- Pre-computation Check ---
-            int availableSlots = (numDays * numSlots) - (numDays * 1); // Subtracting 1 lunch slot per day
+            int availableSlots = (numDays * numSlots) - (numDays); // Subtracting 1 lunch slot per day
             if (totalHours > availableSlots) {
                 System.err.println("Error: Total required subject hours (" + totalHours +
                                    ") exceed available teaching slots (" + availableSlots + ") in the week.");
@@ -344,7 +344,7 @@ class TimetableSolver {
                 } else {
                     Subject subject = timetable[day][slot];
                     if (subject != null) {
-                        System.out.printf("%-25s", subject.toString());
+                        System.out.printf("%-25s", subject);
                     } else {
                         System.out.printf("%-25s", "- Free -");
                     }
